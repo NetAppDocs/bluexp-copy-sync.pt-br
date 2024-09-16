@@ -1,0 +1,90 @@
+---
+settings:
+  name: BlueXP copy and sync
+  harmony_integration: maestro
+  platform: cloud
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  rss_page: whats-new.html
+  langs: pt-br,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
+sidebar:
+  entries:
+  - title: Documentos de cópia e sincronização do BlueXP 
+    url: "/index.html"
+  - title: Notas de lançamento
+    entries:
+    - title: O que há de novo
+      url: "/whats-new.html"
+    - title: Limitações
+      url: "/reference-limitations.html"
+  - title: Comece agora
+    entries:
+    - title: Saiba mais sobre cópia e sincronização do BlueXP 
+      url: "/concept-cloud-sync.html"
+    - title: Início rápido
+      url: "/task-quick-start.html"
+    - title: Exibir relacionamentos de sincronização suportados
+      url: "/reference-supported-relationships.html"
+    - title: Prepare a fonte e o destino
+      url: "/reference-requirements.html"
+    - title: Prepare a rede
+      url: "/reference-networking.html"
+    - title: Instale um agente de dados
+      entries:
+      - title: Instale na AWS
+        url: "/task-installing-aws.html"
+      - title: Instalar no Azure
+        url: "/task-installing-azure.html"
+      - title: Instale no Google Cloud
+        url: "/task-installing-gcp.html"
+      - title: Instale em um host Linux
+        url: "/task-installing-linux.html"
+  - title: Use cópia e sincronização do BlueXP 
+    entries:
+    - title: Sincronize dados entre uma origem e um destino
+      entries:
+      - title: Prepare um agente de dados para sincronizar dados entre o storage de
+          objetos
+        url: "/task-prepare-object-storage.html"
+      - title: Crie uma relação de sincronização
+        url: "/task-creating-relationships.html"
+      - title: Copiar ACLs de um compartilhamento SMB
+        url: "/task-copying-acls.html"
+      - title: Criptografar dados NFS em trânsito
+        url: "/task-nfs-encryption.html"
+      - title: Use segredos do HashiCorp Vault
+        url: "/task-external-vault.html"
+    - title: Configure o licenciamento
+      url: "/task-licensing.html"
+    - title: Gerenciar relações de sincronização
+      url: "/task-managing-relationships.html"
+    - title: Gerenciar agentes de dados
+      url: "/task-managing-data-brokers.html"
+    - title: Veja relatórios para ajustar sua configuração
+      url: "/task-managing-reports.html"
+    - title: Desinstale um corretor de dados
+      url: "/task-uninstalling.html"
+  - title: Automatize com a API REST
+    url: "/api-sync.html"
+  - title: Conceitos
+    entries:
+    - title: Licenciamento
+      url: "/concept-licensing.html"
+    - title: Privacidade de dados
+      url: "/concept-privacy.html"
+    - title: FAQ
+      url: "/faq.html"
+  - title: Conhecimento e apoio
+    entries:
+    - title: Registre-se para obter suporte
+      url: "/task-support-registration.html"
+    - title: Obtenha ajuda
+      url: "/task-get-help.html"
+  - title: Avisos legais
+    url: "/legal-notices.html"
+product-family:
+  name: BlueXP
+  repo: bluexp-family

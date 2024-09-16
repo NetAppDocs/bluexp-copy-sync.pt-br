@@ -1,0 +1,35 @@
+---
+indexpage:
+  title: Documentação de cópia e sincronização do BlueXP 
+  summary: A cópia e sincronização do BlueXP  é um serviço de replicação e sincronização
+    em nuvem para transferir dados nas entre armazenamentos de objetos em nuvem e
+    no local.
+  keywords: bluexp-family, documentation, cloud
+  lead: A cópia e sincronização do BlueXP  é um serviço de replicação e sincronização
+    em nuvem para transferir dados nas entre armazenamentos de objetos em nuvem e
+    no local.
+  tiles:
+  - title: Comece agora
+    links:
+    - title: Visão geral de cópia e sincronização do BlueXP 
+      url: concept-cloud-sync.html
+    - title: Início rápido
+      url: task-quick-start.html
+    - title: FAQ
+      url: faq.html
+  - title: Use cópia e sincronização do BlueXP 
+    links:
+    - title: Crie uma relação de sincronização
+      url: task-creating-relationships.html
+    - title: Configure o licenciamento
+      url: task-licensing.html
+    - title: Gerenciar grupos de corretores de dados
+      url: task-managing-data-brokers.html
+  - title: Blogs & comunidade
+    links:
+    - title: Comunidade NetApp
+      url: https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS
+    - title: BlueXP  blog
+      url: https://cloud.netapp.com/blog
+    - title: Webinars na nuvem
+      url: https://cloud.netapp.com/events

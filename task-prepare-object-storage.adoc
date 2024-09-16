@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: task-prepare-object-storage.html 
+keywords: prepare data broker, data broker, object storage, sync, scanner, configure scanner 
+summary: 'Se você estiver planejando sincronizar dados do storage de objetos para o armazenamento de objetos (por exemplo, Amazon S3 para Azure Blob), precisará preparar o grupo de corretores de dados antes de criar a relação de sincronização.' 
+---
+= Prepare um agente de dados para sincronizar dados entre o storage de objetos
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Se você estiver planejando sincronizar dados do storage de objetos para o armazenamento de objetos (por exemplo, Amazon S3 para Azure Blob), precisará preparar o grupo de corretores de dados antes de criar a relação de sincronização.
+
+.Sobre esta tarefa
+Para preparar o grupo de corretores de dados, você precisará modificar a configuração do scanner. Se você não modificar a configuração, poderá notar problemas de desempenho para essa relação de sincronização.
+
+.Antes de começar
+O grupo de agentes de dados que você usa para sincronizar dados do storage de objetos para o storage de objetos deve gerenciar somente esses tipos de relações de sincronização. Se o grupo de agentes de dados gerenciar um tipo diferente de relacionamento de sincronização (por exemplo, NFS para NFS ou storage de objetos para SMB), a performance dessas relações de sincronização poderá ser afetada negativamente.
+
+.Passos
+. Em cópia e sincronização do BlueXP , selecione *Gerenciar corretores de dados*.
+. Selecione image:icon-settings.png["Uma captura de tela do ícone de configurações"]
+. Atualize a configuração do scanner:
++
+.. Altere *concorrência do scanner* para *1*.
+.. Altere *limite de processos do scanner* para *1*.
+
+
+. Selecione *unify Configuration*.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  atualiza a configuração do grupo de corretores de dados.
+
+.O que se segue?
+Agora você pode criar a relação de sincronização entre o armazenamento de objetos usando o grupo de data broker que acabou de configurar.

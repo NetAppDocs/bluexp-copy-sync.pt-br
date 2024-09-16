@@ -1,0 +1,296 @@
+---
+sidebar: sidebar 
+permalink: task-managing-data-brokers.html 
+keywords: manage data brokers, manage data broker groups, data broker performance, data broker configuration, data broker removal, remove data broker, delete data broker, groups, data broker group, rename data broker group, add data broker, data broker cpu, data broker ram, data broker status, edit group name, change group name, modify group name 
+summary: Um agente de dados sincroniza dados de um local de origem para um local de destino. Um corretor de dados é necessário para cada relacionamento de sincronização que você criar. Gerencie corretores de dados adicionando um novo agente de dados a um grupo, visualizando informações sobre corretores de dados e muito mais. 
+---
+= Gerenciar grupos de corretores de dados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Um grupo de corretores de dados sincroniza dados de um local de origem para um local de destino. Pelo menos um corretor de dados é necessário em um grupo para cada relacionamento de sincronização que você criar. Gerencie grupos de corretores de dados adicionando um novo agente de dados a um grupo, visualizando informações sobre grupos e muito mais.
+
+
+
+== Como os grupos de corretores de dados funcionam
+
+Um grupo de corretores de dados pode incluir um ou mais corretores de dados. Agrupar os corretores de dados juntos pode ajudar a melhorar o desempenho das relações de sincronização.
+
+
+
+=== Os grupos podem gerenciar vários relacionamentos
+
+Um grupo de corretores de dados pode gerenciar um ou mais relacionamentos de sincronização de cada vez.
+
+Por exemplo, digamos que você tenha três relacionamentos:
+
+* O relacionamento 1 é gerenciado pelo grupo A de corretores de dados
+* O relacionamento 2 é gerenciado pelo grupo B de corretores de dados
+* O relacionamento 3 é gerenciado pelo grupo A de corretores de dados
+
+
+Você quer acelerar o desempenho do relacionamento 1 para adicionar um novo agente de dados ao grupo de corretores de dados A. como o grupo A também gerencia o relacionamento de sincronização 3, o desempenho de sincronização para o relacionamento também é acelerado automaticamente.
+
+
+
+=== Número de corretores de dados em um grupo
+
+Em muitos casos, um único agente de dados pode atender aos requisitos de desempenho de um relacionamento de sincronização. Se isso não acontecer, você pode acelerar o desempenho de sincronização adicionando corretores de dados adicionais ao grupo. Mas você deve primeiro verificar outros fatores que podem afetar o desempenho da sincronização. link:faq.html#how-many-data-brokers-are-required-in-a-group["Saiba mais sobre como determinar quando vários corretores de dados são necessários"].
+
+
+
+== Recomendações de segurança
+
+Para garantir a segurança de sua máquina de data broker, a NetApp recomenda o seguinte:
+
+* O SSH não deve permitir o encaminhamento X11
+* O SSH não deve permitir o encaminhamento de conexão TCP
+* SSH não deve permitir túneis
+* O SSH não deve aceitar variáveis de ambiente do cliente
+
+
+Essas recomendações de segurança podem ajudar a evitar conexões não autorizadas à máquina do data broker.
+
+
+
+== Adicione um novo agente de dados a um grupo
+
+Existem várias maneiras de criar um novo corretor de dados:
+
+* Ao criar uma nova relação de sincronização
++
+link:task-creating-relationships.html["Saiba como criar um novo corretor de dados ao criar uma relação de sincronização"].
+
+* Na página *Gerenciar corretores de dados* selecionando *Adicionar novo corretor de dados*, que cria o corretor de dados em um novo grupo
+* A partir da página *Manage Data Brokers* criando um novo corretor de dados em um grupo existente
+
+
+.Antes de começar
+* Não é possível adicionar corretores de dados a um grupo que gere uma relação de sincronização encriptada.
+* Se você quiser criar um agente de dados em um grupo existente, o agente de dados precisa ser um agente de dados local ou do mesmo tipo de agente de dados.
++
+Por exemplo, se um grupo incluir um agente de dados da AWS, você poderá criar um agente de dados da AWS ou um agente de dados local nesse grupo. Não é possível criar um corretor de dados do Azure ou um corretor de dados do Google Cloud porque eles não são do mesmo tipo de corretor de dados.
+
+
+
+.Etapas para criar um corretor de dados em um novo grupo
+. Selecione *Sync > Manage Data Brokers*.
+. Selecione *Adicionar novo Data Broker*.
+. Siga as instruções para criar o corretor de dados.
++
+Para obter ajuda, consulte as seguintes páginas:
+
++
+** link:task-installing-aws.html["Crie um agente de dados na AWS"]
+** link:task-installing-azure.html["Crie um agente de dados no Azure"]
+** link:task-installing-gcp.html["Crie um corretor de dados no Google Cloud"]
+** link:task-installing-linux.html["Instalar o corretor de dados em um host Linux"]
+
+
+
+
+.Etapas para criar um corretor de dados em um grupo existente
+. Selecione *Sync > Manage Data Brokers*.
+. Selecione o menu de ação e selecione *Adicionar Data Broker*.
++
+image:screenshot_sync_group_add.png["Uma captura de tela do menu de ação disponível para cada corretor de dados individual em um grupo."]
+
+. Siga as instruções para criar o corretor de dados no grupo.
++
+Para obter ajuda, consulte as seguintes páginas:
+
++
+** link:task-installing-aws.html["Crie um agente de dados na AWS"]
+** link:task-installing-azure.html["Crie um agente de dados no Azure"]
+** link:task-installing-gcp.html["Crie um corretor de dados no Google Cloud"]
+** link:task-installing-linux.html["Instalar o corretor de dados em um host Linux"]
+
+
+
+
+
+
+== Edite o nome de um grupo
+
+Altere o nome de um grupo de corretores de dados a qualquer momento.
+
+.Passos
+. Selecione *Sync > Manage Data Brokers*.
+. Selecione o menu de ação e selecione *Editar Nome do grupo*.
++
+image:screenshot_sync_group_edit.gif["Uma captura de tela do menu de ação disponível para cada corretor de dados individual em um grupo."]
+
+. Introduza um novo nome e selecione *Guardar*.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  atualiza o nome do grupo de corretores de dados.
+
+
+
+== Configure uma configuração unificada
+
+Se uma relação de sincronização encontrar erros durante o processo de sincronização, unificar a simultaneidade do grupo de corretores de dados pode ajudar a diminuir o número de erros de sincronização. Esteja ciente de que as alterações na configuração do grupo podem afetar o desempenho diminuindo a velocidade da transferência.
+
+Não recomendamos alterar a configuração por conta própria. Você deve consultar o NetApp para entender quando alterar a configuração e como alterá-la.
+
+.Passos
+. Selecione *Gerenciar corretores de dados*.
+. Selecione o ícone Configurações para um grupo de corretores de dados.
++
+image:screenshot_sync_group_settings.png["Uma captura de tela que mostra o ícone Configurações de um grupo de corretores de dados."]
+
+. Altere as configurações conforme necessário e selecione *unify Configuration*.
++
+Observe o seguinte:
+
++
+** Você pode escolher e escolher quais configurações alterar - você não precisa alterar todos os quatro de uma vez.
+** Depois que uma nova configuração é enviada para um agente de dados, o agente de dados reinicia automaticamente e usa a nova configuração.
+** Pode levar até um minuto até que essa alteração ocorra e seja visível na interface de cópia e sincronização do BlueXP .
+** Se um corretor de dados não estiver em execução, a configuração não mudará porque a cópia e a sincronização do BlueXP  não podem se comunicar com ele. A configuração mudará após o recomeço do corretor de dados.
+** Depois de definir uma configuração unificada, qualquer novo agente de dados usará automaticamente a nova configuração.
+
+
+
+
+
+
+== Mova corretores de dados entre grupos
+
+Mova um agente de dados de um grupo para outro, se precisar acelerar a performance do grupo de agentes de dados de destino.
+
+Por exemplo, se um agente de dados não estiver mais gerenciando um relacionamento de sincronização, você poderá movê-lo facilmente para outro grupo que esteja gerenciando relacionamentos de sincronização.
+
+.Limitações
+* Se um grupo de corretores de dados estiver gerenciando um relacionamento de sincronização e houver apenas um corretor de dados no grupo, então você não poderá mover esse corretor de dados para outro grupo.
+* Não é possível mover um agente de dados de ou para um grupo que gerencia relacionamentos de sincronização criptografados.
+* Você não pode mover um agente de dados que está sendo implantado atualmente.
+
+
+.Passos
+. Selecione *Sync > Manage Data Brokers*.
+. image:screenshot_sync_group_expand.gif["Uma captura de tela do botão que permite expandir a lista de corretores de dados em um grupo."]Selecione para expandir a lista de corretores de dados em um grupo.
+. Selecione o menu de ação para um corretor de dados e selecione *mover Data Broker*.
++
+image:screenshot_sync_group_remove.png["Uma captura de tela do menu de ação disponível para cada grupo de corretores de dados individuais."]
+
+. Crie um novo grupo de data broker ou selecione um grupo de data broker existente.
+. Selecione *mover*.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  move o agente de dados para um grupo de corretores de dados novo ou existente. Se não houver outros corretores de dados no grupo anterior, então o BlueXP  copy and Sync o excluirá.
+
+
+
+== Atualize a configuração do proxy
+
+Atualize a configuração do proxy para um agente de dados adicionando detalhes sobre uma nova configuração de proxy ou editando a configuração de proxy existente.
+
+.Passos
+. Selecione *Sync > Manage Data Brokers*.
+. image:screenshot_sync_group_expand.gif["Uma captura de tela do botão que permite expandir a lista de corretores de dados em um grupo."]Selecione para expandir a lista de corretores de dados em um grupo.
+. Selecione o menu de ação para um corretor de dados e selecione *Editar Configuração de proxy*.
+. Especifique detalhes sobre o proxy: Nome do host, número da porta, nome de usuário e senha.
+. Selecione *Atualizar*.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  atualiza o corretor de dados para usar a configuração de proxy para acesso à Internet.
+
+
+
+== Veja a configuração de um corretor de dados
+
+Você pode querer ver detalhes sobre um corretor de dados para identificar coisas como seu nome de host, endereço IP, CPU e RAM disponíveis e muito mais.
+
+A cópia e sincronização do BlueXP  fornece os seguintes detalhes sobre um corretor de dados:
+
+* Informações básicas: ID da instância, nome do host, etc.
+* Rede: Região, rede, sub-rede, IP privado, etc.
+* Software: Distribuição Linux, versão de data broker, etc.
+* Hardware: CPU e RAM
+* Configuração: Detalhes sobre os dois tipos de processos principais do corretor de dados - scanner e transferrer
++
+
+TIP: O scanner verifica a origem e o destino e decide o que deve ser copiado. O transferidor faz a cópia real. A equipe do NetApp pode usar esses detalhes de configuração para sugerir ações que podem otimizar o desempenho.
+
+
+
+.Passos
+. Selecione *Sync > Manage Data Brokers*.
+. image:screenshot_sync_group_expand.gif["Uma captura de tela do botão que permite expandir a lista de corretores de dados em um grupo."]Selecione para expandir a lista de corretores de dados em um grupo.
+. image:screenshot_sync_group_expand.gif["Uma captura de tela do botão que permite expandir detalhes sobre um corretor de dados."]Selecione para ver detalhes sobre um corretor de dados.
++
+image:screenshot_sync_data_broker_details.gif["Uma captura de tela de informações sobre um corretor de dados."]
+
+
+
+
+
+== Solucione problemas com um agente de dados
+
+A cópia e sincronização do BlueXP  exibe um status para cada agente de dados que pode ajudá-lo a solucionar problemas.
+
+.Passos
+. Identifique quaisquer corretores de dados que tenham um status de "desconhecido" ou "Falha".
++
+image:screenshot_sync_broker_status.gif["Uma captura de tela da exibição de status de cópia e sincronização do BlueXP  onde um corretor de dados tem um status \"desconhecido\""]
+
+. Passe o Mouse sobre o image:screenshot_sync_status_icon.gif["Um ícone \"info\""] ícone para ver o motivo da falha.
+. Corrija o problema.
++
+Por exemplo, você pode precisar simplesmente reiniciar o corretor de dados se estiver offline, ou você pode precisar remover o corretor de dados se a implantação inicial falhar.
+
+
+
+
+
+== Remover um corretor de dados de um grupo
+
+Você pode remover um agente de dados de um grupo se ele não for mais necessário ou se a implantação inicial falhar. Esta ação apenas elimina o corretor de dados dos registos da cópia e sincronização do BlueXP . Você precisará excluir manualmente o agente de dados e quaisquer recursos de nuvem adicionais.
+
+.Coisas que você deve saber
+* A cópia e sincronização do BlueXP  exclui um grupo quando você remove o último corretor de dados do grupo.
+* Você não pode remover o último corretor de dados de um grupo se houver um relacionamento usando esse grupo.
+
+
+.Passos
+. Selecione *Sync > Manage Data Brokers*.
+. image:screenshot_sync_group_expand.gif["Uma captura de tela do botão que permite expandir a lista de corretores de dados em um grupo."]Selecione para expandir a lista de corretores de dados em um grupo.
+. Selecione o menu de ação para um corretor de dados e selecione *Remover Data Broker*.
++
+image:screenshot_sync_group_remove.gif["Uma captura de tela do menu de ação disponível para cada grupo de corretores de dados individuais."]
+
+. Selecione *Remover Data Broker*.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  remove o agente de dados do grupo.
+
+
+
+== Eliminar um grupo de corretores de dados
+
+Se um grupo de corretores de dados não gerencia mais nenhuma relação de sincronização, você pode excluir o grupo, que remove todos os corretores de dados da cópia e sincronização do BlueXP .
+
+Os corretores de dados que o BlueXP  copiar e sincronizar remove só são excluídos dos Registros da cópia e sincronização do BlueXP . Você precisará excluir manualmente a instância do data broker do seu provedor de nuvem e quaisquer recursos adicionais de nuvem.
+
+.Passos
+. Selecione *Sync > Manage Data Brokers*.
+. Selecione o menu de ação e selecione *Eliminar grupo*.
++
+image:screenshot_sync_group_add.png["Uma captura de tela do menu de ação disponível para cada corretor de dados individual em um grupo."]
+
+. Para confirmar, digite o nome do grupo e selecione *Excluir grupo*.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  remove os corretores de dados e exclui o grupo.

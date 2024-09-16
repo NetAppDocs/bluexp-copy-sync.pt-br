@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: task-copying-acls.html 
+keywords: permissions, access control list, acls, ntfs, cifs, smb, shares, robocopy, copy, transfer, activate, operating system, os, ram, cpu, networking, copy acls to the target 
+summary: 'A cópia e sincronização do BlueXP  podem copiar listas de controle de acesso (ACLs) entre compartilhamentos SMB e entre compartilhamento SMB e storage de objetos (exceto ONTAP S3). Se necessário, você também tem a opção de preservar manualmente ACLs entre compartilhamentos SMB usando robocopy.' 
+---
+= Copiar ACLs de compartilhamentos SMB
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+A cópia e sincronização do BlueXP  podem copiar listas de controle de acesso (ACLs) entre compartilhamentos SMB e entre compartilhamento SMB e storage de objetos (exceto ONTAP S3). Se necessário, você também tem a opção de preservar manualmente ACLs entre compartilhamentos SMB usando robocopy.
+
+.Opções
+* <<Configurar cópia e sincronização do BlueXP  para copiar ACLs,Configure a cópia e a sincronização do BlueXP  para copiar ACLs automaticamente>>
+* <<Copie manualmente ACLs entre compartilhamentos SMB,Copie manualmente as ACLs entre compartilhamentos SMB>>
+
+
+
+
+== Configurar cópia e sincronização do BlueXP  para copiar ACLs
+
+Copie ACLs entre compartilhamentos SMB e entre compartilhamentos SMB e armazenamento de objetos habilitando uma configuração ao criar um relacionamento ou após criar um relacionamento.
+
+.Antes de começar
+Esse recurso funciona com _qualquer_ tipo de agente de dados: AWS, Azure, Google Cloud Platform ou agente de dados local. O agente de dados local pode executar link:task-installing-linux.html["qualquer sistema operacional suportado"]o .
+
+.Passos para um novo relacionamento
+. A partir de cópia e sincronização do BlueXP , selecione *criar nova sincronização*.
+. Arraste e solte um servidor SMB ou armazenamento de objetos como origem e um servidor SMB ou armazenamento de objetos como destino e selecione *continuar*.
+. Na página *servidor SMB*:
++
+.. Introduza um novo servidor SMB ou selecione um servidor existente e selecione *continuar*.
+.. Insira credenciais para o servidor SMB.
+.. Escolha *Copiar somente arquivos*, *Copiar somente ACL* ou *Copiar arquivos e ACL* e selecione *continuar*.
++
+image:screenshot_acl_support.png["Uma captura de tela que mostra a opção de ativar Copiar listas de controle de acesso para o destino."]
+
+
+
+. Siga as instruções restantes para criar a relação de sincronização.
++
+Ao copiar ACLs de SMB para armazenamento de objetos, você pode optar por copiar as ACLs para as tags do objeto ou nos metadados do objeto, dependendo do destino. Para o Azure e o Google Cloud Storage, apenas a opção de metadados está disponível.
+
++
+A captura de tela a seguir mostra um exemplo da etapa em que você pode fazer essa escolha.
+
++
+image:screenshot-sync-tags-metadata.png["Uma captura de tela da sexta etapa no assistente de relação de sincronização ao copiar para o armazenamento de objetos. Você pode optar por salvar as ACLs nas tags ou metadados do objeto."]
+
+
+
+.Etapas para um relacionamento existente
+. Passe o Mouse sobre a relação de sincronização e selecione o menu de ação.
+. Selecione *Definições*.
+. Escolha *Copiar somente arquivos*, *Copiar somente ACL* ou *Copiar arquivos e ACL* e selecione *continuar*.
+. Selecione *Save Settings* (Guardar definições).
+
+
+.Resultado
+Ao sincronizar dados, a cópia e a sincronização do BlueXP  preserva as ACLs entre a origem e o destino.
+
+
+
+== Copie manualmente ACLs entre compartilhamentos SMB
+
+Você pode preservar manualmente ACLs entre compartilhamentos SMB usando o comando Windows robocopy.
+
+.Passos
+. Identifique um host do Windows que tenha acesso total a ambos os compartilhamentos SMB.
+. Se qualquer um dos endpoints exigir autenticação, use o comando *uso líquido* para se conetar aos endpoints a partir do host do Windows.
++
+Você deve executar esta etapa antes de usar o robocopy.
+
+. A partir da cópia e sincronização do BlueXP , crie uma nova relação entre os compartilhamentos SMB de origem e destino ou sincronize uma relação existente.
+. Após a conclusão da sincronização de dados, execute o seguinte comando a partir do host do Windows para sincronizar as ACLs e a propriedade:
++
+ robocopy /E /COPY:SOU /secfix [source] [target] /w:0 /r:0 /XD ~snapshots /UNILOG:”[logfilepath]
++
+Tanto _source_ quanto _target_ devem ser especificados usando o formato UNC. Por exemplo: <server>/<share>/<path>
+
+

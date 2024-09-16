@@ -1,0 +1,123 @@
+---
+sidebar: sidebar 
+permalink: reference-networking.html 
+keywords: networking, 443, port, ports, port 443, connections, connectivity, path, paths, vpn 
+summary: A rede para cópia e sincronização do BlueXP  inclui conetividade entre o grupo de corretores de dados e os locais de origem e destino, e uma conexão de saída à Internet de corretores de dados através da porta 443. 
+---
+= Visão geral da rede para cópia e sincronização do BlueXP 
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+A rede para cópia e sincronização do BlueXP  inclui conetividade entre o grupo de corretores de dados e os locais de origem e destino, e uma conexão de saída à Internet de corretores de dados através da porta 443.
+
+
+
+== Localização do agente de dados
+
+Um grupo de corretores de dados consiste em um ou mais corretores de dados instalados na nuvem ou no local.
+
+
+
+=== Agente de dados na nuvem
+
+A imagem a seguir mostra um agente de dados em execução na nuvem, na AWS, no Google Cloud ou no Azure. A origem e o destino podem estar em qualquer local, desde que haja uma conexão com o corretor de dados. Por exemplo, você pode ter uma conexão VPN do seu data center para o seu provedor de nuvem.
+
+
+NOTE: Quando o BlueXP  copy and Sync implanta o agente de dados na AWS, Azure ou Google Cloud, ele cria um grupo de segurança que ativa a comunicação de saída necessária.
+
+image:diagram_networking_cloud.png["Um diagrama que mostra o serviço de cópia e sincronização do BlueXP , o agente de dados em execução na nuvem e conexões com a origem e o destino."]
+
+
+
+=== Agente de dados no local
+
+A imagem a seguir mostra o agente de dados em execução no local, em um data center. Novamente, a fonte e o alvo podem estar em qualquer local, desde que haja uma conexão com o corretor de dados.
+
+image:diagram_networking_onprem.png["Um diagrama que mostra o serviço de cópia e sincronização do BlueXP , o agente de dados em execução no local e conexões com a origem e o destino."]
+
+
+
+== Requisitos de rede
+
+* A origem e o destino devem ter uma conexão de rede com o grupo de corretores de dados.
++
+Por exemplo, se um servidor NFS estiver no data center e um agente de dados estiver na AWS, você precisará de uma conexão de rede (VPN ou Direct Connect) da rede para a VPC.
+
+* Um agente de dados precisa de uma conexão de saída de Internet para que possa fazer o polling do serviço de cópia e sincronização do BlueXP  para tarefas pela porta 443.
+* O NetApp recomenda configurar os corretores de origem, destino e dados para usar um serviço de protocolo de tempo de rede (NTP). A diferença de tempo entre os três componentes não deve exceder 5 minutos.
+
+
+
+
+== Endpoints de rede
+
+O agente de dados NetApp requer acesso de saída à Internet pela porta 443 para se comunicar com o serviço de cópia e sincronização BlueXP  e para entrar em Contato com alguns outros serviços e repositórios. Seu navegador da Web local também requer acesso a endpoints para determinadas ações. Se você precisar limitar a conetividade de saída, consulte a seguinte lista de endpoints ao configurar seu firewall para tráfego de saída.
+
+
+
+=== Pontos de extremidade do agente de dados
+
+Um corretor de dados entra em Contato com os seguintes endpoints:
+
+[cols="38,62"]
+|===
+| Endpoints | Finalidade 
+
+
+| \https://olcentgbl.trafficmanager.net | Para entrar em Contato com um repositório para atualizar pacotes CentOS para o host do data broker. Esse endpoint é contatado somente se você instalar manualmente o data broker em um host CentOS. 
+
+
+| \https://rpm.nodesource.com \https://registry.npmjs.org \https://nodejs.org: | Para contatar repositórios para atualizar o Node.js, npm e outros pacotes de 3rd partes usados no desenvolvimento. 
+
+
+| \https://tgz.pm2.io | Para acessar um repositório para atualizar o PM2, que é um pacote de 3rd partes usado para monitorar a cópia e sincronização do BlueXP . 
+
+
+| \https://sqs.us-east-1.amazonaws.com \https://kinesis.us-east-1.amazonaws.com | Para entrar em Contato com os serviços da AWS que o BlueXP  copia e sincroniza usam para operações (enfileirando arquivos, registrando ações e fornecendo atualizações para o agente de dados). 
+
+
+| \https://s3._region_.amazonaws.com por exemplo: s3.us-east-2.amazonaws.com:443 https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region["Consulte a documentação da AWS para obter uma lista de endpoints do S3"^] | Para entrar em Contato com o Amazon S3 quando um relacionamento de sincronização incluir um bucket do S3. 
+
+
+| \https://s3.amazonaws.com/ | Quando você faz o download de logs de corretores de dados da cópia e sincronização do BlueXP , o corretor de dados fecha seu diretório de logs e carrega os logs para um bucket S3 predefinido na região US-East-1. 
+
+
+| \https://storage.googleapis.com/ | Para entrar em Contato com o Google Cloud quando um relacionamento de sincronização usa um bucket do GCP. 
+
+
+| https://_storage-account_.blob.core.windows.net[] Se estiver usando o Azure Data Lake Gen2: https://_storage-account_.dfs.core.windows.net[] Onde _storage-account_ é a conta de armazenamento de origem do usuário. | Para abrir o proxy para o endereço da conta de armazenamento do Azure de um usuário. 
+
+
+| https://cf.cloudsync.NetApp.com https://repo.cloudsync.NetApp.com | Para contactar o serviço de cópia e sincronização do BlueXP . 
+
+
+| https://support.NetApp.com | Para entrar em Contato com o suporte da NetApp ao usar uma licença BYOL para relacionamentos de sincronização. 
+
+
+| \https://fedoraproject.org | Para instalar o 7z na máquina virtual do corretor de dados durante a instalação e atualizações. O 7z é necessário para enviar mensagens AutoSupport para o suporte técnico da NetApp. 
+
+
+| \https://sts.amazonaws.com \https://sts.us-east-1.amazonaws.com | Para verificar as credenciais da AWS quando o agente de dados é implantado na AWS ou quando ele é implantado no local e as credenciais da AWS são fornecidas. O corretor de dados entra em Contato com esse endpoint durante a implantação, quando ele é atualizado e quando ele é reiniciado. 
+
+
+| https://console.BlueXP .NetApp.com/ https://NetApp-cloud-account.auth0.com | Para entrar em Contato com a classificação do BlueXP  quando você usa a classificação para selecionar os arquivos de origem para uma nova relação de sincronização. 
+
+
+| \https://pubsub.googleapis.com | Ao criar uma relação de sincronização contínua a partir de uma conta de armazenamento do Google. 
+
+
+| https://_storage-account_.queue.core.windows.net[] \https://management.azure.com/subscriptions/${_subscriptionId_} /resourceGroups/* onde _storage-account_ é a conta de armazenamento de origem do usuário, _subscriptionid_ é a ID de assinatura de origem e _resourceGroup_ é o grupo de recursos de origem. | Se estiver criando uma relação de sincronização contínua a partir de uma conta de armazenamento do Azure. 
+|===
+
+
+=== Endpoints do navegador da Web
+
+O seu navegador da Web precisa de acesso ao seguinte ponto final para transferir registos para fins de resolução de problemas:
+
+logs.cloudsync.NetApp.com:443

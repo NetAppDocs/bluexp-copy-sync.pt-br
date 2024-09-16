@@ -1,0 +1,175 @@
+---
+sidebar: sidebar 
+permalink: task-installing-gcp.html 
+keywords: data broker, install, gcp, google, networking, permissions, regions, install data broker in gcp, install in gcp, deploy in gcp, deploy data broker in gcp, install data broker in google, install in google, deploy in google, deploy data broker in google, networking requirements, port, ports, 443, port 443, ntp, network time protocol, gcp data broker, service account 
+summary: Quando você cria um novo agente de dados, escolha a opção Google Cloud Data Broker para implantar o software de agente de dados em uma nova instância de máquina virtual em uma VPC. A cópia e sincronização do BlueXP  orienta você pelo processo de instalação, mas os requisitos e etapas são repetidos nesta página para ajudá-lo a se preparar para a instalação. 
+---
+= Crie um novo agente de dados no Google Cloud
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Quando você cria um novo grupo de data broker, escolha o Google Cloud Platform para implantar o software de data broker em uma nova instância de máquina virtual em uma VPC do Google Cloud. A cópia e sincronização do BlueXP  orienta você pelo processo de instalação, mas os requisitos e etapas são repetidos nesta página para ajudá-lo a se preparar para a instalação.
+
+Você também tem a opção de instalar o agente de dados em um host Linux existente na nuvem ou no local. link:task-installing-linux.html["Saiba mais"].
+
+
+
+== Regiões compatíveis do Google Cloud
+
+Todas as regiões são suportadas.
+
+
+
+== Privileges raiz
+
+O software de corretor de dados é executado automaticamente como root no host Linux. Executar como raiz é um requisito para operações de agente de dados. Por exemplo, para montar compartilhamentos.
+
+
+
+== Requisitos de rede
+
+* O agente de dados precisa de uma conexão de saída à Internet para que possa consultar o serviço de cópia e sincronização do BlueXP  para tarefas pela porta 443.
++
+Quando o BlueXP  copy and Sync implanta o agente de dados no Google Cloud, ele cria um grupo de segurança que permite a comunicação de saída necessária.
+
++
+Se precisar limitar a conetividade de saída, link:reference-networking.html["a lista de endpoints que o corretor de dados entra em contato"]consulte .
+
+* A NetApp recomenda configurar o agente de origem, destino e dados para usar um serviço de protocolo de tempo de rede (NTP). A diferença de tempo entre os três componentes não deve exceder 5 minutos.
+
+
+
+
+== Permissões necessárias para implantar o agente de dados no Google Cloud
+
+Certifique-se de que o usuário do Google Cloud que implanta o agente de dados tenha as seguintes permissões:
+
+[source, yaml]
+----
+- compute.networks.list
+- compute.regions.list
+- deploymentmanager.deployments.create
+- deploymentmanager.deployments.delete
+- deploymentmanager.operations.get
+- iam.serviceAccounts.list
+----
+
+
+== Permissões necessárias para a conta de serviço
+
+Ao implantar o agente de dados, você precisa selecionar uma conta de serviço que tenha as seguintes permissões:
+
+[source, yaml]
+----
+- logging.logEntries.create
+- resourcemanager.projects.get
+- storage.buckets.get
+- storage.buckets.list
+- storage.objects.create
+- storage.objects.delete
+- storage.objects.get
+- storage.objects.getIamPolicy
+- storage.objects.list
+- storage.objects.setIamPolicy
+- storage.objects.update
+- iam.serviceAccounts.signJwt
+- pubsub.subscriptions.consume
+- pubsub.subscriptions.create
+- pubsub.subscriptions.delete
+- pubsub.subscriptions.list
+- pubsub.topics.attachSubscription
+- pubsub.topics.create
+- pubsub.topics.delete
+- pubsub.topics.list
+- pubsub.topics.setIamPolicy
+- storage.buckets.update
+- cloudkms.cryptoKeys.list
+- cloudkms.keyRings.list
+----
+Notas:
+
+. A permissão "iam.serviceAccounts.signJwt" é necessária somente se você estiver planejando configurar o corretor de dados para usar um cofre externo HashiCorp.
+. As permissões "pubsub.*" e "storage.buckets.update" são necessárias somente se você planeja habilitar a configuração de sincronização contínua em uma relação de sincronização do Google Cloud Storage para outro local de armazenamento na nuvem. link:task-creating-relationships.html#settings["Saiba mais sobre a opção de sincronização contínua"].
+. As permissões "cloudkms.cryptoKeys.list" e "cloudkms.keyrings.list" são necessárias somente se você planeja usar uma chave KMS gerenciada pelo cliente em um bucket do Google Cloud Storage de destino.
+
+
+
+
+== Crie o agente de dados
+
+Existem algumas maneiras de criar um novo corretor de dados. Estas etapas descrevem como instalar um corretor de dados no Google Cloud quando você cria um relacionamento de sincronização.
+
+.Passos
+. Selecione *criar nova sincronização*.
+. Na página *Definir relação de sincronização*, escolha uma fonte e destino e selecione *continuar*.
++
+Conclua as etapas até chegar à página *Data Broker Group*.
+
+. Na página *Data Broker Group*, selecione *Create Data Broker* e, em seguida, selecione *Google Cloud Platform*.
++
+image:screenshot-google.png["Uma captura de tela da página Data Broker que permite escolher entre um agente de dados AWS, Azure, Google Cloud e no local."]
+
+. Introduza um nome para o corretor de dados e selecione *continuar*.
+. Se você for solicitado, faça login com sua conta do Google.
++
+O formulário é de propriedade e hospedado pelo Google. Suas credenciais não são fornecidas ao NetApp.
+
+. Selecione uma conta de projeto e serviço e escolha um local para o corretor de dados, incluindo se deseja ativar ou desativar um endereço IP público.
++
+Se você não habilitar um endereço IP público, precisará definir um servidor proxy na próxima etapa.
+
++
+image:screenshot_data_broker_gcp.png["Uma captura de tela que mostra as informações necessárias para implantar um corretor de dados no Google Cloud."]
+
+. Especifique uma configuração de proxy, se for necessário um proxy para acesso à Internet na VPC.
++
+Se um proxy for necessário para acesso à Internet, o proxy deve estar no Google Cloud e usar a mesma conta de serviço que o corretor de dados.
+
+. Quando o corretor de dados estiver disponível, selecione *continuar* em BlueXP  copy and Sync.
++
+A instância leva aproximadamente 5 a 10 minutos para implantar. Você pode monitorar o andamento do serviço de cópia e sincronização do BlueXP , que é atualizado automaticamente quando a instância está disponível.
+
+. Complete as páginas no assistente para criar a nova relação de sincronização.
+
+
+.Resultado
+Você implantou um agente de dados no Google Cloud e criou uma nova relação de sincronização. Você pode usar esse corretor de dados com relações de sincronização adicionais.
+
+
+
+== Forneça permissões para usar buckets em outros projetos do Google Cloud
+
+Quando você cria uma relação de sincronização e escolhe o Google Cloud Storage como origem ou destino, a cópia e sincronização do BlueXP  permitem que você escolha entre os buckets que a conta de serviço do agente de dados tem permissões para usar. Por padrão, isso inclui os buckets que estão no projeto _same_ da conta de serviço do corretor de dados. Mas você pode escolher intervalos de _outros_ projetos se você fornecer as permissões necessárias.
+
+.Passos
+. Abra o console do Google Cloud Platform e carregue o serviço Cloud Storage.
+. Selecione o nome do intervalo que você deseja usar como origem ou destino em uma relação de sincronização.
+. Selecione *permissões*.
+. Selecione *Adicionar*.
+. Introduza o nome da conta de serviço do corretor de dados.
+. Selecione uma função que forneça <<Permissões necessárias para a conta de serviço,as mesmas permissões como mostrado acima>>o .
+. Selecione *Guardar*.
+
+
+.Resultado
+Quando você configura uma relação de sincronização, agora você pode escolher esse intervalo como origem ou destino na relação de sincronização.
+
+
+
+== Detalhes sobre a instância VM do data broker
+
+A cópia e sincronização do BlueXP  cria um agente de dados no Google Cloud usando a seguinte configuração.
+
+Compatibilidade Node.js:: v21,2.0
+Tipo de máquina:: n2-padrão-4
+VCPUs:: 4
+RAM:: 15 GB
+Sistema operacional:: Rocky Linux 9,0
+Tamanho e tipo do disco:: HDD de 20 GB padrão pd
+

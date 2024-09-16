@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations.html 
+keywords: limitations, china, unsupported regions 
+summary: As limitações conhecidas identificam plataformas, dispositivos ou funções que não são suportadas por esta versão do produto ou que não interoperam corretamente com ele. Revise essas limitações com cuidado. 
+---
+= Limitações
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+As limitações conhecidas identificam plataformas, dispositivos ou funções que não são suportadas por esta versão do produto ou que não interoperam corretamente com ele. Revise essas limitações com cuidado.
+
+A cópia e sincronização do BlueXP  não são suportadas nas seguintes regiões:
+
+* Regiões do governo da AWS
+* Regiões do governo do Azure
+* China
+

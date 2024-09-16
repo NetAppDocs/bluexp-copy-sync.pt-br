@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: task-uninstalling.html 
+keywords: uninstall, uninstall data broker, remove data broker 
+summary: Se necessário, execute um script de desinstalação para remover o corretor de dados e pacotes e diretórios que foram criados quando o corretor de dados foi instalado. 
+---
+= Desinstale o corretor de dados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Se necessário, execute um script de desinstalação para remover o corretor de dados e os pacotes e diretórios que foram criados quando o corretor de dados foi instalado.
+
+.Passos
+. Faça login no host do data broker.
+. Mude para o diretório do data broker: `/opt/netapp/databroker`
+. Execute os seguintes comandos:
++
+`chmod +x uninstaller-DataBroker.sh`
+`./uninstaller-DataBroker.sh`
+
+. Prima "y" para confirmar a desinstalação.
+

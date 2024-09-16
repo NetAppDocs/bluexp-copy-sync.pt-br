@@ -1,0 +1,223 @@
+---
+sidebar: sidebar 
+permalink: task-installing-azure.html 
+keywords: data broker, install, azure, networking, permissions, regions, install data broker in azure, install in azure, deploy in azure, deploy data broker in azure, networking requirements, port, ports, 443, port 443, ntp, network time protocol, azure data broker 
+summary: Quando você cria um novo corretor de dados, escolha a opção Azure Data Broker para implantar o software de corretor de dados em uma nova máquina virtual em uma VNet. A cópia e sincronização do BlueXP  orienta você pelo processo de instalação, mas os requisitos e etapas são repetidos nesta página para ajudá-lo a se preparar para a instalação. 
+---
+= Crie um novo agente de dados no Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ao criar um novo grupo de corretores de dados, escolha o Microsoft Azure para implantar o software de corretor de dados em uma nova máquina virtual em uma VNet. A cópia e sincronização do BlueXP  orienta você pelo processo de instalação, mas os requisitos e etapas são repetidos nesta página para ajudá-lo a se preparar para a instalação.
+
+Você também tem a opção de instalar o agente de dados em um host Linux existente na nuvem ou no local. link:task-installing-linux.html["Saiba mais"].
+
+
+
+== Regiões Azure compatíveis
+
+Todas as regiões são suportadas, exceto as regiões China, US Gov e US DoD.
+
+
+
+== Privileges raiz
+
+O software de corretor de dados é executado automaticamente como root no host Linux. Executar como raiz é um requisito para operações de agente de dados. Por exemplo, para montar compartilhamentos.
+
+
+
+== Requisitos de rede
+
+* O agente de dados precisa de uma conexão de saída à Internet para que possa consultar o serviço de cópia e sincronização do BlueXP  para tarefas pela porta 443.
++
+Quando o BlueXP  copy and Sync implanta o agente de dados no Azure, ele cria um grupo de segurança que permite a comunicação de saída necessária.
+
++
+Se precisar limitar a conetividade de saída, link:reference-networking.html["a lista de endpoints que o corretor de dados entra em contato"]consulte .
+
+* A NetApp recomenda configurar o agente de origem, destino e dados para usar um serviço de protocolo de tempo de rede (NTP). A diferença de tempo entre os três componentes não deve exceder 5 minutos.
+
+
+
+
+== Permissões necessárias para implantar o agente de dados no Azure
+
+Certifique-se de que a conta de utilizador do Azure que utiliza para implementar o agente de dados tem as seguintes permissões:
+
+[source, json]
+----
+{
+    "Name": "Azure Data Broker",
+    "Actions": [
+					"Microsoft.Resources/subscriptions/read",
+                    "Microsoft.Resources/deployments/operationstatuses/read",
+                    "Microsoft.Resources/subscriptions/locations/read",
+                    "Microsoft.Network/networkInterfaces/read",
+                    "Microsoft.Network/virtualNetworks/subnets/read",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.Resources/subscriptions/resourceGroups/delete",
+                    "Microsoft.Resources/deployments/write",
+                    "Microsoft.Resources/deployments/validate/action",
+                    "Microsoft.Resources/deployments/operationStatuses/read",
+                    "Microsoft.Resources/deployments/cancel/action",
+                    "Microsoft.Compute/virtualMachines/read",
+                    "Microsoft.Compute/virtualMachines/delete",
+                    "Microsoft.Compute/disks/delete",
+                    "Microsoft.Network/networkInterfaces/delete",
+                    "Microsoft.Network/publicIPAddresses/delete",
+                    "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.Compute/virtualMachines/delete",
+                    "Microsoft.Network/networkSecurityGroups/write",
+                    "Microsoft.Network/networkSecurityGroups/join/action",
+                    "Microsoft.Compute/disks/write",
+                    "Microsoft.Network/networkInterfaces/write",
+                    "Microsoft.Network/virtualNetworks/read",
+                    "Microsoft.Network/publicIPAddresses/write",
+                    "Microsoft.Compute/virtualMachines/write",
+                    "Microsoft.Compute/virtualMachines/extensions/write",
+                    "Microsoft.Resources/deployments/read",
+                    "Microsoft.Network/networkSecurityGroups/read",
+                    "Microsoft.Network/publicIPAddresses/read",
+                    "Microsoft.Network/virtualNetworks/subnets/join/action",
+                    "Microsoft.Network/publicIPAddresses/join/action",
+                    "Microsoft.Network/networkInterfaces/join/action",
+                    "Microsoft.Storage/storageAccounts/read",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/write",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/read",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/delete",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/action",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/action",
+                    "Microsoft.EventGrid/systemTopics/read",
+                    "Microsoft.EventGrid/systemTopics/write",
+                    "Microsoft.EventGrid/systemTopics/delete",
+                    "Microsoft.EventGrid/eventSubscriptions/write",
+                    "Microsoft.Storage/storageAccounts/write"
+                    "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read"
+                    "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write"
+                    "Microsoft.Network/networkSecurityGroups/securityRules/read",
+        	        "Microsoft.Network/networkSecurityGroups/read",
+----
+....
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "Azure Data Broker",
+    "IsCustom": "true"
+}
+....
+Nota:
+
+. As permissões a seguir só serão necessárias se você planeja habilitar o https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html#settings["Definição de sincronização contínua"] em uma relação de sincronização do Azure para outro local de armazenamento em nuvem:
++
+** 'Microsoft.Storage/storageAccounts/read',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/write',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/read',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/delete',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/action',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/action',
+** 'Microsoft.EventGrid/systemTopics/read',
+** 'Microsoft.EventGrid/systemTopics/write',
+** 'Microsoft.EventGrid/systemTopics/delete',
+** 'Microsoft.EventGrid/eventSubscriptions/write',
+** 'Microsoft.Storage/storageAccounts/write'
+
+
++
+Além disso, o escopo atribuível deve ser definido como escopo de assinatura e escopo do grupo de recursos *não* se você planeja implementar a sincronização contínua no Azure.
+
+. As permissões a seguir só são necessárias se você planeja escolher sua própria segurança para a criação do data broker:
++
+** "Microsoft.Network/networkSecurityGroups/securityRules/read"
+** "Microsoft.Network/networkSecurityGroups/read"
+
+
+
+
+
+
+== Método de autenticação
+
+Ao implantar o corretor de dados, você precisará escolher um método de autenticação para a máquina virtual: Uma senha ou um par de chaves SSH público-privadas.
+
+Para obter ajuda sobre a criação de um par de chaves, https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys["Documentação do Azure: Crie e use um par de chaves SSH público-privada para VMs Linux no Azure"^] consulte .
+
+
+
+== Crie o agente de dados
+
+Existem algumas maneiras de criar um novo corretor de dados. Estas etapas descrevem como instalar um corretor de dados no Azure quando você cria uma relação de sincronização.
+
+.Passos
+. Selecione *criar nova sincronização*.
+. Na página *Definir relação de sincronização*, escolha uma fonte e destino e selecione *continuar*.
++
+Conclua as etapas até chegar à página *Data Broker Group*.
+
+. Na página *Data Broker Group*, selecione *Create Data Broker* e, em seguida, selecione *Microsoft Azure*.
++
+image:screenshot-azure.png["Uma captura de tela da página Data Broker que permite escolher entre um agente de dados AWS, Azure, Google Cloud e no local."]
+
+. Introduza um nome para o corretor de dados e selecione *continuar*.
+. Se lhe for solicitado, inicie sessão na sua conta Microsoft. Se você não for solicitado, selecione *entrar no Azure*.
++
+O formulário é de propriedade e hospedado pela Microsoft. Suas credenciais não são fornecidas ao NetApp.
+
+. Escolha um local para o corretor de dados e insira detalhes básicos sobre a máquina virtual.
++
+image:screenshot_azure_data_broker.png["Uma captura de tela da página de implantação do Azure que mostra os seguintes campos: Assinatura, região do Azure, VNet, Sub-rede, Nome da VM, Nome do Usuário, método de autenticação e Grupo de recursos."]
+
++
+
+NOTE: Se você pretende implementar uma relação de sincronização contínua, deve atribuir uma função personalizada ao seu agente de dados. Isso também pode ser feito manualmente depois que o corretor é criado.
+
+. Especifique uma configuração de proxy, se for necessário um proxy para acesso à Internet no VNet.
+. Selecione *continuar*. Se você quiser adicionar permissões do S3 ao seu agente de dados, insira suas chaves secretas e de acesso da AWS.
+. Selecione *continuar* e mantenha a página aberta até que a implantação esteja concluída.
++
+O processo pode levar até 7 minutos.
+
+. Em cópia e sincronização do BlueXP , selecione *continuar* quando o corretor de dados estiver disponível.
+. Complete as páginas no assistente para criar a nova relação de sincronização.
+
+
+.Resultado
+Você implantou um agente de dados no Azure e criou uma nova relação de sincronização. Você pode usar esse corretor de dados com relações de sincronização adicionais.
+
+.Recebendo uma mensagem sobre a necessidade de consentimento do administrador?
+****
+Se a Microsoft notificar você de que a aprovação do administrador é necessária porque a cópia e a sincronização do BlueXP  precisam de permissão para acessar recursos em sua organização em seu nome, então você terá duas opções:
+
+. Peça ao administrador do AD para fornecer a você a seguinte permissão:
++
+No Azure, aceda a *Centros de administração > Azure AD > utilizadores e grupos > Definições de utilizador* e ative *os utilizadores podem autorizar as aplicações a acederem aos dados da empresa em seu nome*.
+
+. Peça ao administrador do AD para consentir em seu nome para *CloudSync-AzureDataBrokerCreator* usando o seguinte URL (este é o endpoint de consentimento do administrador):
++
+\https://login.microsoftonline.com/{FILL HERE YOUR TENANT ID/v2,0/adminconsent?client_id_8e4ca3a-bafa-4831-97cc-5a38923cab85&redirect_uri_https://cloudsync.NetApp.com&scope-https://management.azure.com/user_impersonationhttps://graph.microsoft.com/User.Read
+
++
+Como mostrado na URL, o URL do nosso aplicativo é https://cloudsync.NetApp.com e o ID do cliente do aplicativo é 8ee4ca3a-bafa-4831-97cc-5a38923cab85.
+
+
+
+****
+
+
+== Detalhes sobre a VM do Data Broker
+
+A cópia e sincronização do BlueXP  cria um agente de dados no Azure usando a seguinte configuração.
+
+Compatibilidade Node.js:: v21,2.0
+Tipo de VM:: Padrão DS4 v2
+VCPUs:: 8
+RAM:: 28 GB
+Sistema operacional:: Rocky Linux 9,0
+Tamanho e tipo do disco:: SSD premium de 64 GB
+

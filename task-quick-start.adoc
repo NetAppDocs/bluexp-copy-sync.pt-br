@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: task-quick-start.html 
+keywords: quick start, overview, deploying, getting started, get started, signing up, free trial 
+summary: A introdução ao serviço de cópia e sincronização do BlueXP  inclui alguns passos. 
+---
+= Início rápido para cópia e sincronização do BlueXP 
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+A introdução ao serviço de cópia e sincronização do BlueXP  inclui alguns passos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"] Inicie sessão e configure o BlueXP 
+[role="quick-margin-para"]
+Você deve ter começado com o BlueXP , que inclui fazer login, configurar uma conta e, possivelmente, implantar um conetor e criar ambientes de trabalho.
+
+[role="quick-margin-para"]
+Se você quiser criar relacionamentos de sincronização para qualquer uma das seguintes opções, primeiro você precisa criar ou descobrir um ambiente de trabalho:
+
+[role="quick-margin-list"]
+* Amazon FSX para ONTAP
+* Azure NetApp Files
+* Cloud Volumes ONTAP
+* Clusters ONTAP no local
+
+
+[role="quick-margin-para"]
+Um conector é necessário para Cloud Volumes ONTAP, clusters ONTAP no local e Amazon FSX para ONTAP.
+
+[role="quick-margin-list"]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-overview.html["Saiba como começar a usar o BlueXP "^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Saiba mais sobre conetores"^]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"] Prepare sua fonte e destino
+[role="quick-margin-para"]
+Verifique se sua origem e destino são suportados e configurados. O requisito mais importante é verificar a conetividade entre o grupo de data broker e os locais de origem e destino.
+
+[role="quick-margin-list"]
+* link:reference-supported-relationships.html["Exibir relacionamentos suportados"]
+* link:reference-requirements.html["Prepare a fonte e o destino"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"] Prepare um local para o agente de dados do NetApp
+[role="quick-margin-para"]
+O software de corretor de dados NetApp sincroniza dados de uma origem para um destino (isso é chamado de _relação de sincronização_). Você pode executar o agente de dados na AWS, Azure, Google Cloud Platform ou no local. Um grupo de corretores de dados, que consiste em um ou mais corretores de dados, precisa de uma conexão de saída de Internet pela porta 443 para que ele possa se comunicar com o serviço de cópia e sincronização do BlueXP  e entrar em Contato com alguns outros serviços e repositórios. link:reference-networking.html#networking-endpoints["Exibir a lista de endpoints"].
+
+[role="quick-margin-para"]
+A cópia e sincronização do BlueXP  o guiarão pelo processo de instalação quando você cria uma relação de sincronização, momento em que você pode implantar um agente de dados na nuvem ou baixar um script de instalação para seu próprio host Linux.
+
+[role="quick-margin-list"]
+* link:task-installing-aws.html["Revise a instalação da AWS"]
+* link:task-installing-azure.html["Revise a instalação do Azure"]
+* link:task-installing-gcp.html["Revise a instalação do Google Cloud"]
+* link:task-installing-linux.html["Revise a instalação do host Linux"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatro"] Crie sua primeira relação de sincronização
+[role="quick-margin-para"]
+Inicie sessão https://console.bluexp.netapp.com/["BlueXP"^] no , selecione *Sync* e, em seguida, arraste e largue as suas seleções para a origem e destino. Siga as instruções para concluir a configuração. link:task-creating-relationships.html["Saiba mais"].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"] Pague pelos seus relacionamentos de sincronização depois que a avaliação gratuita terminar
+[role="quick-margin-para"]
+Inscreva-se na AWS ou Azure para pagar conforme o uso ou pagar anualmente. Ou compre licenças diretamente da NetApp. Basta ir para a página Configurações de Licença no BlueXP  copiar e sincronizar para configurá-lo. link:task-licensing.html["Saiba mais"].

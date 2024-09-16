@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: concept-privacy.html 
+keywords: privacy, data privacy, credentials, access to credentials, hashicorp vault 
+summary: O NetApp não tem acesso a quaisquer credenciais que você fornecer ao usar o serviço de cópia e sincronização do BlueXP . As credenciais são armazenadas diretamente na máquina do data broker, que reside na sua rede. 
+---
+= Privacidade de dados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+O NetApp não tem acesso a quaisquer credenciais que você fornecer ao usar o serviço de cópia e sincronização do BlueXP . As credenciais são armazenadas diretamente na máquina do data broker, que reside na sua rede.
+
+Dependendo da configuração escolhida, a cópia e a sincronização do BlueXP  podem solicitar credenciais ao criar uma nova relação. Por exemplo, ao configurar um relacionamento que inclua um servidor SMB ou ao implantar o agente de dados na AWS.
+
+Essas credenciais são sempre salvas diretamente no próprio corretor de dados. O agente de dados reside em uma máquina em sua rede, seja no local ou na sua conta na nuvem. As credenciais nunca são disponibilizadas ao NetApp.
+
+As credenciais são criptografadas localmente na máquina do corretor de dados usando o HashiCorp Vault.

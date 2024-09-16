@@ -1,0 +1,237 @@
+---
+sidebar: sidebar 
+permalink: task-managing-relationships.html 
+keywords: sync, immediate, now, schedule, minutes, hours, on, off, delete, group, accelerate, accelerating, grouping, multiple data brokers, sync now, turn off, turn on, sync schedule, settings, change settings, recently modified files, delete files on target, retries, retry, file types, exclude file type, include file type, delete relationship 
+summary: Você pode gerenciar relacionamentos de sincronização a qualquer momento sincronizando dados imediatamente, alterando horários e muito mais. 
+---
+= Gerenciando relacionamentos de sincronização
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você pode gerenciar relacionamentos de sincronização a qualquer momento sincronizando dados imediatamente, alterando horários e muito mais.
+
+
+
+== Execute uma sincronização de dados imediata
+
+Em vez de esperar pela próxima sincronização agendada, você pode pressionar um botão para sincronizar imediatamente os dados entre a origem e o destino.
+
+.Passos
+. No *Dashboard*, navegue até a relação de sincronização e selecione image:icon-sync-action.png["Uma captura de tela do botão que permite que você execute ações em uma relação de sincronização"]
+. Selecione *Sincronizar agora* e, em seguida, selecione *Sincronizar* para confirmar.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  inicia o processo de sincronização de dados para a relação.
+
+
+
+== Acelere a performance de sincronização
+
+Acelere o desempenho de um relacionamento de sincronização adicionando um agente de dados adicional ao grupo que gerencia o relacionamento. O corretor de dados adicional deve ser um corretor de dados _new_.
+
+.Como isso funciona
+Se o grupo de corretores de dados gerenciar outras relações de sincronização, o novo agente de dados que você adicionar ao grupo também acelerará o desempenho dessas relações de sincronização.
+
+Por exemplo, digamos que você tenha três relacionamentos:
+
+* O relacionamento 1 é gerenciado pelo grupo A de corretores de dados
+* O relacionamento 2 é gerenciado pelo grupo B de corretores de dados
+* O relacionamento 3 é gerenciado pelo grupo A de corretores de dados
+
+
+Você quer acelerar o desempenho do relacionamento 1 para adicionar um novo agente de dados ao grupo de corretores de dados A. como o grupo A também gerencia o relacionamento de sincronização 3, o desempenho de sincronização para o relacionamento também é acelerado automaticamente.
+
+.Passos
+. Certifique-se de que pelo menos um dos corretores de dados existentes no relacionamento esteja on-line.
+. No *Dashboard*, navegue até a relação de sincronização e selecione image:icon-sync-action.png["Uma captura de tela do botão que permite que você execute ações em uma relação de sincronização"]
+. Selecione *Accelerate*.
+. Siga as instruções para criar um novo corretor de dados.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  adiciona o novo agente de dados ao grupo. O desempenho da próxima sincronização de dados deve ser acelerado.
+
+
+
+== Atualizar credenciais
+
+Você pode atualizar o corretor de dados com as credenciais mais recentes da origem ou destino em um relacionamento de sincronização existente. A atualização das credenciais pode ajudar se suas políticas de segurança exigirem que você atualize as credenciais periodicamente.
+
+A atualização de credenciais é compatível com qualquer fonte ou destino que a cópia e sincronização do BlueXP  exija credenciais para: Servidores Blob, Box, IBM Cloud Object Storage, StorageGRID, armazenamento ONTAP S3, SFTP e SMB.
+
+.Passos
+. No *Painel de sincronização*, vá para uma relação de sincronização que requer credenciais e selecione *Atualizar credenciais*.
++
+image:screenshot_sync_update_credentials.png["Uma captura de tela que mostra a opção Atualizar credenciais na página Sincronizar relacionamentos logo abaixo do nome da origem ou destino."]
+
+. Insira as credenciais e selecione *Atualizar*.
++
+Uma nota sobre servidores SMB: Se o domínio for novo, você precisará especificá-lo quando atualizar as credenciais. Se o domínio não foi alterado, então você não precisa inseri-lo novamente.
+
++
+Se você inseriu um domínio quando criou a relação de sincronização, mas não inseriu um novo domínio ao atualizar as credenciais, a cópia e a sincronização do BlueXP  continuarão usando o domínio original fornecido.
+
+
+
+.Resultado
+A cópia e sincronização do BlueXP  atualiza as credenciais no agente de dados. Pode levar até 10 minutos até que o corretor de dados comece a usar as credenciais atualizadas para sincronizações de dados.
+
+
+
+== Configurar notificações
+
+A configuração *notificações* para cada relação de sincronização permite que você escolha se deseja receber notificações de cópia e sincronização do BlueXP  na Central de notificações do BlueXP . Você pode ativar notificações para sincronizações de dados bem-sucedidas, sincronizações de dados com falha e sincronizações de dados canceladas.
+
+image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-notification-center.png["Uma captura de tela que mostra a Central de notificações no BlueXP ."]
+
+Além disso, você também pode receber notificações por e-mail.
+
+.Passos
+. Modifique as configurações de uma relação de sincronização:
++
+.. No *Dashboard*, navegue até a relação de sincronização e selecione image:icon-sync-action.png["Uma captura de tela do botão que permite que você execute ações em uma relação de sincronização"]
+.. Selecione *Definições*.
+.. Ativar *notificações*.
+.. Selecione *Save Settings* (Guardar definições).
+
+
+. Se você quiser receber notificações por e-mail, configure as configurações de alerta e notificações:
++
+.. Selecione *Definições > Definições de alertas e notificações*.
+.. Selecione um usuário ou vários usuários e escolha o tipo de notificação *Info*.
+.. Selecione *aplicar*.
+
+
+
+
+.Resultado
+Agora você receberá notificações de cópia e sincronização do BlueXP  na Central de notificações do BlueXP , com algumas notificações chegando por e-mail, se você configurou essa opção.
+
+
+
+== Altere as configurações de uma relação de sincronização
+
+Modifique as configurações que definem como os arquivos de origem e as pastas são sincronizados e mantidos no local de destino.
+
+. No *Dashboard*, navegue até a relação de sincronização e selecione image:icon-sync-action.png["Uma captura de tela do botão que permite que você execute ações em uma relação de sincronização"]
+. Selecione *Definições*.
+. Modifique qualquer uma das definições.
++
+image:screenshot_sync_settings.png["Uma captura de tela que mostra as configurações de uma relação de sincronização."]
+
++
+[[deleteonsource]] aqui está uma breve descrição de cada configuração:
+
++
+Programação:: Escolha uma programação recorrente para futuras sincronizações ou desative a programação de sincronização. Você pode agendar uma relação para sincronizar dados a cada 1 minutos.
+Tempo limite de sincronização:: Defina se a cópia e a sincronização do BlueXP  devem cancelar uma sincronização de dados se a sincronização não tiver sido concluída no número especificado de minutos, horas ou dias.
+Notificações:: Permite escolher se deseja receber notificações de cópia e sincronização do BlueXP  no Centro de notificações do BlueXP . Você pode ativar notificações para sincronizações de dados bem-sucedidas, sincronizações de dados com falha e sincronizações de dados canceladas.
++
+--
+Se você quiser receber notificações
+
+--
+Tenta novamente:: Defina o número de vezes que a cópia e a sincronização do BlueXP  devem tentar sincronizar um arquivo antes de ignorá-lo.
+Compare por:: Escolha se a cópia e a sincronização do BlueXP  devem comparar determinados atributos ao determinar se um arquivo ou diretório foi alterado e deve ser sincronizado novamente.
++
+--
+Mesmo que você desmarque esses atributos, a cópia e sincronização do BlueXP  ainda compara a origem com o destino, verificando os caminhos, tamanhos de arquivo e nomes de arquivo. Se houver alguma alteração, ele sincroniza esses arquivos e diretórios.
+
+Você pode optar por ativar ou desativar a cópia e sincronização do BlueXP  comparando os seguintes atributos:
+
+** *Mtime*: O último tempo modificado para um arquivo. Este atributo não é válido para diretórios.
+** *Uid*, *gid* e *mode*: Sinalizadores de permissão para Linux.
+
+
+--
+Copiar para objetos:: Não é possível editar esta opção depois de criar a relação.
+Ficheiros modificados recentemente:: Escolha excluir arquivos que foram modificados recentemente antes da sincronização programada.
+Eliminar ficheiros na origem:: Escolha excluir arquivos do local de origem depois que o BlueXP  copiar e sincronizar os arquivos para o local de destino. Essa opção inclui o risco de perda de dados porque os arquivos de origem são excluídos após serem copiados.
++
+--
+Se você ativar essa opção, também precisará alterar um parâmetro no arquivo local.json no corretor de dados. Abra o ficheiro e atualize-o da seguinte forma:
+
+[source, json]
+----
+{
+"workers":{
+"transferrer":{
+"delete-on-source": true
+}
+}
+}
+----
+Depois de atualizar o arquivo local.json, você deve reiniciar: `pm2 restart all`.
+
+--
+Excluir arquivos no destino:: Escolha excluir arquivos do local de destino, se eles foram excluídos da origem. O padrão é nunca excluir arquivos do local de destino.
+Tipos de ficheiros:: Defina os tipos de arquivo a serem incluídos em cada sincronização: Arquivos, diretórios, links simbólicos e links físicos.
++
+--
+
+NOTE: Os links físicos estão disponíveis apenas para relacionamentos NFS para NFS não protegidos. Os usuários estarão limitados a um processo de scanner e a uma simultaneidade de scanner, e as digitalizações devem ser executadas a partir de um diretório raiz.
+
+--
+Excluir extensões de arquivos:: Especifique a regex ou extensões de arquivo para excluir da sincronização digitando a extensão do arquivo e pressionando *Enter*. Por exemplo, digite _log_ ou _.log_ para excluir arquivos *.log. Não é necessário um separador para várias extensões. O vídeo a seguir fornece uma breve demonstração:
++
+--
+video::video_file_extensions.mp4[width=840,height=240]
+
+NOTE: Regex, ou expressões regulares, diferem de carateres universais ou expressões glob. Este recurso *somente* funciona com o regex.
+
+--
+Excluir diretórios:: Especifique um máximo de 15 regex ou diretórios para excluir da sincronização digitando seu nome ou caminho completo do diretório e pressionando *Enter*. Por padrão, os diretórios de snapshot .copy-offload, .snapshot, etc. são excluídos.
++
+--
+
+NOTE: Regex, ou expressões regulares, diferem de carateres universais ou expressões glob. Este recurso *somente* funciona com o regex.
+
+--
+Tamanho do ficheiro:: Escolha sincronizar todos os arquivos, independentemente do seu tamanho ou apenas arquivos que estão em um intervalo de tamanho específico.
+Data de modificação:: Escolha todos os arquivos independentemente da data da última modificação, arquivos modificados após uma data específica, antes de uma data específica ou entre um intervalo de tempo.
+Data de criação:: Quando um servidor SMB é a origem, esta configuração permite sincronizar arquivos criados após uma data específica, antes de uma data específica ou entre um intervalo de tempo específico.
+ACL - Lista de controlo de acesso:: Copie somente ACLs, somente arquivos ou ACLs e arquivos de um servidor SMB habilitando uma configuração quando você cria um relacionamento ou depois de criar um relacionamento.
+
+
+. Selecione *Save Settings* (Guardar definições).
+
+
+.Resultado
+A cópia e sincronização do BlueXP  modifica a relação de sincronização com as novas configurações.
+
+
+
+== Eliminar relações
+
+Você pode excluir uma relação de sincronização, se não precisar mais sincronizar dados entre a origem e o destino. Esta ação não exclui o grupo de corretores de dados (ou as instâncias individuais de corretores de dados) e não exclui dados do destino.
+
+
+
+=== Opção 1: Excluir uma única relação de sincronização
+
+.Passos
+. No *Dashboard*, navegue até a relação de sincronização e selecione image:icon-sync-action.png["Uma captura de tela do botão que permite que você execute ações em uma relação de sincronização"]
+. Selecione *Delete* e, em seguida, selecione *Delete* novamente para confirmar.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  exclui a relação de sincronização.
+
+
+
+=== Opção 2: Excluir várias relações de sincronização
+
+.Passos
+. No *Dashboard*, navegue até o botão "Create New Sync" (criar nova sincronização) e selecione image:icon-sync-action.png["Uma captura de tela do botão que permite que você execute ações em uma relação de sincronização"]
+. Selecione as relações de sincronização que pretende eliminar, selecione *Eliminar* e, em seguida, selecione *Eliminar* novamente para confirmar.
+
+
+.Resultado
+A cópia e sincronização do BlueXP  exclui as relações de sincronização.
