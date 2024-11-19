@@ -361,7 +361,6 @@
   <block id="ebd974875888e4cb1567f55e3466cda1" category="cell">Para instalar o 7z na máquina virtual do corretor de dados durante a instalação e atualizações. O 7z é necessário para enviar mensagens AutoSupport para o suporte técnico da NetApp.</block>
   <block id="2869c1b7d6055fd39cb65435bce896fd" category="cell">\https://sts.amazonaws.com \https://sts.us-east-1.amazonaws.com</block>
   <block id="89100474e7faee0c34727c4b2b471007" category="cell">Para verificar as credenciais da AWS quando o agente de dados é implantado na AWS ou quando ele é implantado no local e as credenciais da AWS são fornecidas. O corretor de dados entra em Contato com esse endpoint durante a implantação, quando ele é atualizado e quando ele é reiniciado.</block>
-  <block id="e7972d5601badb4c5fcefad96c59c2fc" category="cell">https://console.BlueXP .NetApp.com/ https://NetApp-cloud-account.auth0.com</block>
   <block id="07fd1a9bba5ed1d65155cb7196d9fff7" category="cell">Para entrar em Contato com a classificação do BlueXP  quando você usa a classificação para selecionar os arquivos de origem para uma nova relação de sincronização.</block>
   <block id="8f606ab2764de8092de1ca0d967cfb8d" category="cell">\https://pubsub.googleapis.com</block>
   <block id="df94b5032f4c4edc418da1de5a985935" category="cell">Ao criar uma relação de sincronização contínua a partir de uma conta de armazenamento do Google.</block>
@@ -1038,8 +1037,6 @@
   <block id="b4951d06315b1f9ffb6d04ceb4346101" category="list-text">*RAM*: 16 GB</block>
   <block id="53a3e84f8dd7775216fa9eaac8d2ba6d" category="list-text">* CPU*: 4 núcleos</block>
   <block id="1187c6e89712492c48d5d9a1e68f3b42" category="list-text">* Espaço livre em disco *: 10 GB</block>
-  <block id="1a3d8802d280d4ec910f54042cd62998" category="inline-link">SELinux</block>
-  <block id="6388693da9b6d4d4012711303b71d780" category="list-text">*SELinux*: Recomendamos que você desative<block ref="59f91e142e660e7d393df4005d7488a3" category="inline-link-rx"></block> no host.</block>
   <block id="3d64791fb8102a78b642b754f758f4b9" category="paragraph">O SELinux aplica uma política que bloqueia atualizações de software de corretor de dados e pode impedir que o corretor de dados entre em Contato com os endpoints necessários para a operação normal.</block>
   <block id="a43f5cf69d6af0c6e17bed7ff726625e" category="list-text">O host Linux deve ter uma conexão com a origem e o destino.</block>
   <block id="e7b55bccb60334ca631527b050553022" category="list-text">O servidor de arquivos deve permitir que o host Linux acesse as exportações.</block>
@@ -1942,4 +1939,6 @@
   <block id="0b9c6eef4e3d3a222eb04e910d252339" category="sidebar">Licenciamento</block>
   <block id="0adc03eac86772ad2c75c8f140be417e" category="sidebar">Conhecimento e apoio</block>
   <block id="2a81eb3b4a7f22fb1fdb159561b71f3f" category="doc">Correções de bugs</block>
+  <block id="60b6724cc91011c88aedcdfe5a1554f0" category="cell">https://api.BlueXP .NetApp.com https://NetApp-cloud-account.auth0.com</block>
+  <block id="6a16108e082698a01703a8570c1c83ab" category="list-text">*SELinux*: Recomendamos que você desative o SELinux no host.</block>
 </blocks>

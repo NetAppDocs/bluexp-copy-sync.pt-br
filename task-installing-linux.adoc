@@ -42,7 +42,7 @@ Um sistema Red Hat Enterprise Linux deve ser registrado no Red Hat Subscription 
 * *RAM*: 16 GB
 * * CPU*: 4 núcleos
 * * Espaço livre em disco *: 10 GB
-* *SELinux*: Recomendamos que você desative https://selinuxproject.org/["SELinux"^] no host.
+* *SELinux*: Recomendamos que você desative o SELinux no host.
 +
 O SELinux aplica uma política que bloqueia atualizações de software de corretor de dados e pode impedir que o corretor de dados entre em Contato com os endpoints necessários para a operação normal.
 

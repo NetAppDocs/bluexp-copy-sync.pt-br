@@ -106,7 +106,7 @@ Um corretor de dados entra em Contato com os seguintes endpoints:
 | \https://sts.amazonaws.com \https://sts.us-east-1.amazonaws.com | Para verificar as credenciais da AWS quando o agente de dados é implantado na AWS ou quando ele é implantado no local e as credenciais da AWS são fornecidas. O corretor de dados entra em Contato com esse endpoint durante a implantação, quando ele é atualizado e quando ele é reiniciado. 
 
 
-| https://console.BlueXP .NetApp.com/ https://NetApp-cloud-account.auth0.com | Para entrar em Contato com a classificação do BlueXP  quando você usa a classificação para selecionar os arquivos de origem para uma nova relação de sincronização. 
+| https://api.BlueXP .NetApp.com https://NetApp-cloud-account.auth0.com | Para entrar em Contato com a classificação do BlueXP  quando você usa a classificação para selecionar os arquivos de origem para uma nova relação de sincronização. 
 
 
 | \https://pubsub.googleapis.com | Ao criar uma relação de sincronização contínua a partir de uma conta de armazenamento do Google. 
