@@ -1941,4 +1941,6 @@
   <block id="2a81eb3b4a7f22fb1fdb159561b71f3f" category="doc">Correções de bugs</block>
   <block id="60b6724cc91011c88aedcdfe5a1554f0" category="cell">https://api.BlueXP .NetApp.com https://NetApp-cloud-account.auth0.com</block>
   <block id="6a16108e082698a01703a8570c1c83ab" category="list-text">*SELinux*: Recomendamos que você desative o SELinux no host.</block>
+  <block id="43cb17f8c706e2a2a7e4c81a5cb2d17b" category="paragraph">Atualizamos o serviço de cópia e sincronização do BlueXP  e o corretor de dados para corrigir alguns bugs. A nova versão do Data Broker é 1,0.56.</block>
+  <block id="b6eaf938209a57174cf0c8478fbb177d" category="section-title">27 de outubro de 2024</block>
 </blocks>

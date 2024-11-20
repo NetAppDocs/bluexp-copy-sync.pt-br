@@ -18,6 +18,16 @@ Saiba o que há de novo na cópia e sincronização do BlueXP .
 
 
 
+== 27 de outubro de 2024
+
+
+
+=== Correções de bugs
+
+Atualizamos o serviço de cópia e sincronização do BlueXP  e o corretor de dados para corrigir alguns bugs. A nova versão do Data Broker é 1,0.56.
+
+
+
 == 16 de setembro de 2024
 
 
