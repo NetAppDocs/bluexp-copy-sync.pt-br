@@ -119,6 +119,7 @@ O acesso ao Azure é definido por relacionamento fornecendo uma conta de armazen
 Você pode instalar um corretor de dados em um host Linux quando você cria uma relação de sincronização.
 
 .Passos
+. No menu de navegação BlueXP , selecione *Mobilidade > Copiar e sincronizar*.
 . Selecione *criar nova sincronização*.
 . Na página *Definir relação de sincronização*, escolha uma fonte e destino e selecione *continuar*.
 +

@@ -33,15 +33,17 @@ As licenças devem ser gerenciadas por meio da cópia e sincronização do BlueX
 A AWS permite que você pague conforme o uso ou pague anualmente.
 
 .Passos para pagar conforme o uso
-. Selecione *Sync > Licensing* (sincronização > Licenciamento).
-. Selecione *AWS*
+. No menu de navegação BlueXP , selecione *Mobilidade > Copiar e sincronizar*.
+. Selecione *Licenciamento*.
+. Selecione *AWS*.
 . Selecione *Subscribe* e, em seguida, selecione *Continue*.
 . Inscreva-se no AWS Marketplace e faça login novamente no serviço de cópia e sincronização do BlueXP  para concluir o Registro.
 +
 O vídeo a seguir mostra o processo:
 
 +
-video::video_cloud_sync_registering.mp4[width=848,height=480]
+.Assine a cópia e a sincronização do BlueXP  no AWS Marketplace
+video::796ffd6d-cade-4750-8504-b24c010b225d[panopto]
 
 
 .Passos para pagar anualmente
@@ -60,7 +62,8 @@ O Azure permite que você pague conforme o uso ou pague anualmente.
 Uma conta de usuário do Azure que tenha permissões de Colaborador ou proprietário na assinatura relevante.
 
 .Passos
-. Selecione *Sync > Licensing* (sincronização > Licenciamento).
+. No menu de navegação BlueXP , selecione *Mobilidade > Copiar e sincronizar*.
+. Selecione *Licenciamento*.
 . Selecione *Azure*.
 . Selecione *Subscribe* e, em seguida, selecione *Continue*.
 . No portal do Azure, selecione *criar*, selecione suas opções e, em seguida, selecione *assinar*.
@@ -73,7 +76,8 @@ Selecione *mensal* para pagar por hora, ou *anual* para pagar por um ano antes.
 O vídeo a seguir mostra o processo:
 
 +
-video::video_cloud_sync_registering_azure.mp4[width=848,height=480]
+.Assine a cópia e sincronização do BlueXP  a partir do Azure Marketplace
+video::a6a39447-b7b1-42f6-9c89-b24c010b21b9[panopto]
 
 
 
@@ -87,7 +91,8 @@ Você precisará do número de série da sua licença e do nome de usuário e se
 
 .Passos
 . Compre uma licença por mailto:ng-cloudsync-Contact at NetApp.com?subject: Cloud%20Sync%20Service%20-%20BYOL%20License%20Purchase%20Request[contactar o NetApp].
-. No BlueXP , selecione *Sincronizar > Licenciamento*.
+. No menu de navegação BlueXP , selecione *Mobilidade > Copiar e sincronizar*.
+. Selecione *Licenciamento*.
 . Selecione *Adicionar licença* e adicione as informações necessárias:
 +
 .. Introduza o número de série.
@@ -109,7 +114,8 @@ Você precisará do número de série da sua licença e do nome de usuário e se
 Se você estendeu uma licença de cópia e sincronização do BlueXP  que adquiriu do NetApp, a nova data de expiração não será atualizada automaticamente na cópia e sincronização do BlueXP . Você precisa adicionar a licença novamente para atualizar a data de expiração. As licenças devem ser gerenciadas por meio da cópia e sincronização do BlueXP  ou do site aplicável e *não* por meio de uma carteira digital.
 
 .Passos
-. No BlueXP , selecione *Sincronizar > Licenciamento*.
+. No menu de navegação BlueXP , selecione *Mobilidade > Copiar e sincronizar*.
+. Selecione *Licenciamento*.
 . Selecione *Adicionar licença* e adicione as informações necessárias:
 +
 .. Introduza o número de série.

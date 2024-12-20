@@ -106,6 +106,7 @@ Notas:
 Existem algumas maneiras de criar um novo corretor de dados. Estas etapas descrevem como instalar um corretor de dados no Google Cloud quando você cria um relacionamento de sincronização.
 
 .Passos
+. No menu de navegação BlueXP , selecione *Mobilidade > Copiar e sincronizar*.
 . Selecione *criar nova sincronização*.
 . Na página *Definir relação de sincronização*, escolha uma fonte e destino e selecione *continuar*.
 +

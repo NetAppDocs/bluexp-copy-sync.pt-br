@@ -155,6 +155,7 @@ Para obter ajuda sobre a criação de um par de chaves, https://docs.microsoft.c
 Existem algumas maneiras de criar um novo corretor de dados. Estas etapas descrevem como instalar um corretor de dados no Azure quando você cria uma relação de sincronização.
 
 .Passos
+. No menu de navegação BlueXP , selecione *Mobilidade > Copiar e sincronizar*.
 . Selecione *criar nova sincronização*.
 . Na página *Definir relação de sincronização*, escolha uma fonte e destino e selecione *continuar*.
 +

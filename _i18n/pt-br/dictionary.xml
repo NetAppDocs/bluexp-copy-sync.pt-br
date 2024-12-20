@@ -1105,8 +1105,6 @@
   <block id="e028f7fc834047902996d4b3faec74ef" category="section-title">[[AWS]]Inscreva-se na AWS</block>
   <block id="7f1e5fcf21192da891eea1c1f4f6e6f0" category="paragraph">A AWS permite que você pague conforme o uso ou pague anualmente.</block>
   <block id="f06e94914580a228484d54783ffeb2bb" category="list-title">Passos para pagar conforme o uso</block>
-  <block id="b9c67bb0bae9993217d3413e493a9d52" category="list-text">Selecione *Sync &gt; Licensing* (sincronização &gt; Licenciamento).</block>
-  <block id="af3298973678fbb2b80974a8030f07ac" category="list-text">Selecione *AWS*</block>
   <block id="a5fb6f9fbd972c02e5329e1ff986d9d5" category="list-text">Selecione *Subscribe* e, em seguida, selecione *Continue*.</block>
   <block id="6169c8d461dd7f9996b17fcf210180a3" category="list-text">Inscreva-se no AWS Marketplace e faça login novamente no serviço de cópia e sincronização do BlueXP  para concluir o Registro.</block>
   <block id="03909f0465e674709c33e446a2657166" category="paragraph">O vídeo a seguir mostra o processo:</block>
@@ -1128,7 +1126,6 @@
   <block id="a1c678174ddff43ed8cf229a96c7a003" category="paragraph">Para pagar antecipadamente pelas relações de sincronização, você deve comprar uma ou mais licenças e adicioná-las ao serviço de cópia e sincronização do BlueXP .</block>
   <block id="97e3031ee8bcd0a19765ddc808e71590" category="paragraph">Você precisará do número de série da sua licença e do nome de usuário e senha da conta do site de suporte da NetApp à qual a licença está associada.</block>
   <block id="0f5161c9e18f97b653442fef34de1024" category="list-text">Compre uma licença por mailto:ng-cloudsync-Contact at NetApp.com?subject: Cloud%20Sync%20Service%20-%20BYOL%20License%20Purchase%20Request[contactar o NetApp].</block>
-  <block id="8a16f41efcb781e6645783df6cb0e97b" category="list-text">No BlueXP , selecione *Sincronizar &gt; Licenciamento*.</block>
   <block id="0be0367eff89e989e3751d45bd6caf93" category="list-text">Selecione *Adicionar licença* e adicione as informações necessárias:</block>
   <block id="a7a65c558a31a52f3a2570581f5170c2" category="list-text">Introduza o número de série.</block>
   <block id="441eaafe617acae90fac942cbac1d2a0" category="list-text">Selecione a conta do site de suporte da NetApp associada à licença que você está adicionando:</block>
@@ -1943,4 +1940,11 @@
   <block id="6a16108e082698a01703a8570c1c83ab" category="list-text">*SELinux*: Recomendamos que você desative o SELinux no host.</block>
   <block id="43cb17f8c706e2a2a7e4c81a5cb2d17b" category="paragraph">Atualizamos o serviço de cópia e sincronização do BlueXP  e o corretor de dados para corrigir alguns bugs. A nova versão do Data Broker é 1,0.56.</block>
   <block id="b6eaf938209a57174cf0c8478fbb177d" category="section-title">27 de outubro de 2024</block>
+  <block id="4fa4cb31b90bbe492aedd2e14cab7850" category="video-title">Excluir extensões de arquivo para uma relação de sincronização</block>
+  <block id="befcd22ee9f31ea0976355003e77715b" category="list-text">No menu de navegação BlueXP , selecione *Mobilidade &gt; Copiar e sincronizar*.</block>
+  <block id="f8b6a77f9bfe4363519793574823fcdf" category="video-title">Inicie um agente de dados a partir de um modelo do AWS CloudFormation</block>
+  <block id="fdd0629e14af63efd824f165e5349337" category="list-text">Selecione *Licenciamento*.</block>
+  <block id="734a65eeb41483b7a636c9cf13e4aad7" category="list-text">Selecione *AWS*.</block>
+  <block id="045842584f2fd61a80d6c55f49bd1f4f" category="video-title">Assine a cópia e a sincronização do BlueXP  no AWS Marketplace</block>
+  <block id="09cf0bd8febab038e59733b8d4ac6505" category="video-title">Assine a cópia e sincronização do BlueXP  a partir do Azure Marketplace</block>
 </blocks>

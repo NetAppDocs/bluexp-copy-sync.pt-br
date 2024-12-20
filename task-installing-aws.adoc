@@ -71,6 +71,7 @@ Siga as etapas abaixo para especificar a função do IAM ao implantar o corretor
 Existem algumas maneiras de criar um novo corretor de dados. Estas etapas descrevem como instalar um agente de dados na AWS ao criar um relacionamento de sincronização.
 
 .Passos
+. No menu de navegação BlueXP , selecione *Mobilidade > Copiar e sincronizar*.
 . Selecione *criar nova sincronização*.
 . Na página *Definir relação de sincronização*, escolha uma fonte e destino e selecione *continuar*.
 +
@@ -92,7 +93,8 @@ Se você preferir não fornecer chaves de acesso, selecione o link na parte infe
 [[cft]]o vídeo a seguir mostra como iniciar a instância do data broker usando um modelo do CloudFormation:
 
 +
-video::video_cloud_sync.mp4[width=848,height=480]
+.Inicie um agente de dados a partir de um modelo do AWS CloudFormation
+video::abaf0898-ea15-4f84-938e-b24c010b21e8[panopto]
 . Se você inseriu uma chave de acesso da AWS, selecione um local para a instância, selecione um par de chaves, escolha se deseja habilitar um endereço IP público e selecione uma função do IAM existente ou deixe o campo em branco para que a cópia e sincronização do BlueXP  criem a função para você. Você também tem a opção de criptografar seu corretor de dados usando uma chave KMS.
 +
 Se você escolher sua própria função do IAM, <<iam,você precisará fornecer as permissões necessárias>>.
