@@ -1028,9 +1028,7 @@
   <block id="17308c76959fcb971603b7274a57c128" category="list-text">*Sistema operacional*:</block>
   <block id="deb96f2e04c20206372a663fc1e22a63" category="list-text">CentOS 8,0 e 8,5</block>
   <block id="735736a0904d4dd4641f1c0b6e93ac7a" category="paragraph">CentOS Stream não é suportado.</block>
-  <block id="62839d4e5d5a9de91b6f7d896439934b" category="list-text">Red Hat Enterprise Linux 8,5, 8,8 e 8,9</block>
   <block id="cf76271f717860ca93c6825568b0690d" category="list-text">Rocky Linux 9</block>
-  <block id="083265255bba92c059791cd3a9803274" category="list-text">Ubuntu Server 20,04 LTS</block>
   <block id="473733802c02f67f489689f787461e62" category="list-text">SUSE Linux Enterprise Server 15 SP1</block>
   <block id="a855786065eb842829e76727ee601d59" category="paragraph">O comando<block ref="bcb2c9ba3070afceaf76b8ceb5e4a15b" prefix=" " category="inline-code"></block> deve ser executado no host antes de instalar o corretor de dados.</block>
   <block id="35ec85020897e56acfca830003a03e8c" category="paragraph">Um sistema Red Hat Enterprise Linux deve ser registrado no Red Hat Subscription Management. Se não estiver registado, o sistema não poderá aceder aos repositórios para atualizar o software de 3rd partes necessário durante a instalação.</block>
@@ -1947,4 +1945,9 @@
   <block id="734a65eeb41483b7a636c9cf13e4aad7" category="list-text">Selecione *AWS*.</block>
   <block id="045842584f2fd61a80d6c55f49bd1f4f" category="video-title">Assine a cópia e a sincronização do BlueXP  no AWS Marketplace</block>
   <block id="09cf0bd8febab038e59733b8d4ac6505" category="video-title">Assine a cópia e sincronização do BlueXP  a partir do Azure Marketplace</block>
+  <block id="83f73c94bb5f748ce272fa98b9d62582" category="doc">Novo suporte de SO para agente de dados</block>
+  <block id="726c1f4efc6286c68c0e686bb97c19c5" category="paragraph">O corretor de dados agora é compatível com hosts que executam Red Hat Enterprise 9,4, Ubuntu 23,04 e Ubuntu 24,04.</block>
+  <block id="87a7ac9f5b2ba3fbc595d73b0c0dc71c" category="list-text">Red Hat Enterprise Linux 8,5, 8,8, 8,9 e 9,4</block>
+  <block id="62c1014736e4269f295e55cd59d3a0ec" category="list-text">Ubuntu Server 20,04 LTS, 23,04 LTS e 24,04 LTS</block>
+  <block id="723559e2f2e86e612c412da00a435eea" category="section-title">2 de fevereiro de 2025</block>
 </blocks>
