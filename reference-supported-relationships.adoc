@@ -28,7 +28,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Blob do Azure
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -47,7 +46,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Storage do Azure Data Lake Gen2
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -67,7 +65,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Azure NetApp Files
 * Caixa 1
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -86,7 +83,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Blob do Azure
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -119,7 +115,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Storage do Azure Data Lake Gen2
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -151,25 +146,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Storage do Azure Data Lake Gen2
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
-* Google Cloud Storage
-* IBM Cloud Object Storage
-* Servidor NFS
-* Cluster ONTAP on-premises (NFS ou SMB)
-* Servidor SMB
-* StorageGRID
-
-
-
-
-| Cloud Volumes Service  a| 
-* Amazon EFS
-* Amazon FSX para ONTAP
-* Amazon S3
-* Blob do Azure
-* Azure NetApp Files
-* Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -187,7 +163,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Blob do Azure
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -215,7 +190,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Azure NetApp Files
 * Caixa 1
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -234,7 +208,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Storage do Azure Data Lake Gen2
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * Google Drive
 * IBM Cloud Object Storage
@@ -255,7 +228,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Storage do Azure Data Lake Gen2
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS
@@ -289,7 +261,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Storage do Azure Data Lake Gen2
 * Azure NetApp Files
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * Google Drive
 * IBM Cloud Object Storage
@@ -311,7 +282,6 @@ A cópia e sincronização do BlueXP  permite sincronizar dados de uma origem p
 * Azure NetApp Files
 * Caixa 1
 * Cloud Volumes ONTAP
-* Cloud Volumes Service
 * Google Cloud Storage
 * IBM Cloud Object Storage
 * Servidor NFS

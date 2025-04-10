@@ -55,7 +55,6 @@
   <block id="218f5307b8ee8bb2d446b8572cd40e9f" category="list-text">Storage do Azure Data Lake Gen2</block>
   <block id="7450cfde7058dc5e1f7909d0280fd7ae" category="list-text">Azure NetApp Files</block>
   <block id="ad1b29fd112650803371dd1a913315af" category="list-text">Caixa (disponível como pré-visualização)</block>
-  <block id="200b74de2e12f861dad63aa0de84ec6c" category="list-text">Cloud Volumes Service</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="list-text">Cloud Volumes ONTAP</block>
   <block id="833c2c211a541e50ad94433664e4b5c1" category="list-text">Google Cloud Storage</block>
   <block id="e0daf39823ec1a1a7878c9718f063d5f" category="list-text">Google Drive</block>
@@ -123,7 +122,6 @@
   <block id="6de51c73db055b72838083b7da60e27e" category="paragraph">As licenças de cópia e sincronização do BlueXP  também estão disponíveis através do seu representante da NetApp. Cada licença permite 20 relações de sincronização por 12 meses.</block>
   <block id="9cc30b3e9afbdb901b838020c4f35584" category="inline-link-macro">Saiba mais sobre licenças</block>
   <block id="326db01706ec74f8dfe188207959e516" category="paragraph"><block ref="c8493ffe20fa12122d5f8e9b98cc5b4b" category="inline-link-macro-rx"></block>.</block>
-  <block id="49f3a6d816929e060637c72d117a2ab1" category="admonition">As relações de cópia e sincronização do BlueXP  são gratuitas para Cloud Volumes Service e Azure NetApp Files.</block>
   <block id="d14d70754e8322b819c6bc86af6beefd" category="paragraph">*Cobranças de recursos*</block>
   <block id="bdf9c0b5a2bb19426e68000000a0fa8e" category="paragraph">As cobranças por recursos estão relacionadas aos custos de computação e storage para executar o agente de dados na nuvem.</block>
   <block id="01396bcd8023631c1f74003124e865f5" category="section-title">Como é que a cópia e a sincronização do BlueXP  são faturadas e como faço para gerenciar minha assinatura?</block>
@@ -253,9 +251,6 @@
   <block id="9812e4bcf0263cfa80fdd8c8a789a255" category="paragraph">Altere o nível de serviço para Premium ou Ultra para melhorar o desempenho de sincronização.</block>
   <block id="94e12c4a58e36c62d41d5c7ea1f166f7" category="inline-link">Saiba mais sobre os níveis de serviço e a taxa de transferência do Azure NetApp Files</block>
   <block id="8c7b3ed9d7207fdbe57540ab6cd5e1e7" category="paragraph"><block ref="bc692a932f7211cd1ab661879beac160" category="inline-link-rx"></block>.</block>
-  <block id="06dd90f0736ba00a0e3050c043c11683" category="section-title">Por que estou tendo baixo desempenho com o Cloud Volumes Service para AWS?</block>
-  <block id="37bbffa966391c253fd64fcdf3509afa" category="paragraph">Ao sincronizar dados de ou para um volume de nuvem, você pode ter falhas e problemas de desempenho se o nível de performance do volume de nuvem for padrão.</block>
-  <block id="305fa2f993292af4e7b31404440f0f2e" category="paragraph">Altere o nível de serviço para Premium ou Extreme para melhorar o desempenho de sincronização.</block>
   <block id="a74feaca0228e843c01e1cc6a5a7a4da" category="section-title">Quantos corretores de dados são necessários em um grupo?</block>
   <block id="6d0c6fb653b3e1d2a836e0b86dabea25" category="paragraph">Ao criar um novo relacionamento, você começa com um único agente de dados em um grupo (a menos que você tenha selecionado um agente de dados existente que pertence a um relacionamento de sincronização acelerada). Em muitos casos, um único agente de dados pode atender aos requisitos de desempenho de um relacionamento de sincronização. Se isso não acontecer, você pode acelerar o desempenho de sincronização adicionando corretores de dados adicionais ao grupo. Mas você deve primeiro verificar outros fatores que podem afetar o desempenho da sincronização.</block>
   <block id="c6bdda7b88c4f51edb4d0ca671f8c528" category="paragraph">Vários fatores podem afetar o desempenho da transferência de dados. O desempenho geral da sincronização pode ser afetado devido à largura de banda, latência e topologia da rede, bem como às especificações de VM do agente de dados e ao desempenho do sistema de armazenamento. Por exemplo, um único corretor de dados em um grupo pode atingir 100 MB/s, enquanto a taxa de transferência de disco no destino pode permitir apenas 64 MB/s. Como resultado, o grupo de corretores de dados continua tentando copiar os dados, mas o destino não consegue atender ao desempenho do grupo de corretores de dados.</block>
@@ -1950,4 +1945,5 @@
   <block id="87a7ac9f5b2ba3fbc595d73b0c0dc71c" category="list-text">Red Hat Enterprise Linux 8,5, 8,8, 8,9 e 9,4</block>
   <block id="62c1014736e4269f295e55cd59d3a0ec" category="list-text">Ubuntu Server 20,04 LTS, 23,04 LTS e 24,04 LTS</block>
   <block id="723559e2f2e86e612c412da00a435eea" category="section-title">2 de fevereiro de 2025</block>
+  <block id="3de4ee14f1b1d0abe0ecac5872f26c6c" category="admonition">As relações de cópia e sincronização do BlueXP  são gratuitas para o Azure NetApp Files.</block>
 </blocks>

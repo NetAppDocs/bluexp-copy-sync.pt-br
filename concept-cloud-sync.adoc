@@ -52,7 +52,6 @@ A cópia e sincronização do BlueXP  são compatíveis com os seguintes tipos 
 * Storage do Azure Data Lake Gen2
 * Azure NetApp Files
 * Caixa (disponível como pré-visualização)
-* Cloud Volumes Service
 * Cloud Volumes ONTAP
 * Google Cloud Storage
 * Google Drive
