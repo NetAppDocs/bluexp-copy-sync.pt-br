@@ -212,7 +212,7 @@ link:task-managing-relationships.html#change-the-settings-for-a-sync-relationshi
 
 === E se eu tiver um conjunto de dados muito grande?
 
-Se um único diretório contém 600.000 arquivos ou mais, mailto:ng-cloudsync-support NetApp.com[Contact US] para que possamos ajudá-lo a configurar o grupo de corretores de dados para lidar com a carga útil. Talvez seja necessário adicionar memória adicional ao grupo de corretores de dados.
+Se um único diretório contiver 600.000 arquivos ou mais,link:task-get-help.html["Contate-nos"] para que possamos ajudá-lo a configurar o grupo de corretores de dados para manipular a carga útil.  Talvez seja necessário adicionar memória adicional ao grupo do corretor de dados.
 
 Note que não há limite para o número total de arquivos no ponto de montagem. A memória extra é necessária para diretórios grandes com arquivos 600.000 ou mais, independentemente do seu nível na hierarquia (diretório superior ou subdiretório).
 
